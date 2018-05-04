@@ -37,7 +37,10 @@ module.exports = {
     new ArcGISPlugin(),
     new HtmlWebPackPlugin({
       title: "My ArcGIS Webpack App",
-      chunksSortMode: "none"
+      chunksSortMode: "none",
+      meta: {
+        viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      }
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
