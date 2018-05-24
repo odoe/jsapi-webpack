@@ -2,5 +2,6 @@ node_modules/*
 release/*
 dist/*
 build/*
+.cache-loader/*
 
 package-lock.json

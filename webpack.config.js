@@ -19,22 +19,53 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            cacheDirectory: true
+        include: path.resolve(__dirname, "src"),
+        use: [
+          "cache-loader",
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true
+            }
           }
-        }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|webp)$/,
+        use: [
+          "cache-loader",
+          {
+            loader: "url-loader",
+            options: {
+              // Inline files smaller than 10 kB (10240 bytes)
+              limit: 10 * 1024,
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(wsv|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        use: [
+          "cache-loader",
+          {
+            loader: "file-loader",
+            options: {
+              name: "build/[name].[ext]"
+            }
+          }
+        ]
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: ["cache-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       }
     ]
   },
 
   plugins: [
-    new ArcGISPlugin(),
+    new ArcGISPlugin({
+      useDefaultAssetLoaders: false
+    }),
     new HtmlWebPackPlugin({
       title: "My ArcGIS Webpack App",
       chunksSortMode: "none",
