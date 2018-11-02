@@ -1,4 +1,3 @@
-import "@dojo/shim/Promise";
 import "./config";
 
 import FeatureLayer from "esri/layers/FeatureLayer";
