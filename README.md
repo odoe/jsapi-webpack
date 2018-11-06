@@ -4,11 +4,18 @@ This sample application uses the [`@arcgis/webpack-plugin`](https://github.com/e
 
 [Video](https://youtu.be/gTFZgLYegDY)
 
+## install dependencies
 ```
-# install dependencies
 npm install
-# start dev server
+```
+
+## start dev server
+```
 npm start
-# generate a build 
+```
+
+
+## generate a build 
+```
 npm run build
 ```
