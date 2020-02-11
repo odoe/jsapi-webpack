@@ -46,7 +46,6 @@ module.exports = {
       {
         test: /\.(wsv|ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: [
-          "cache-loader",
           {
             loader: "file-loader",
             options: {
@@ -57,7 +56,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ["cache-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       }
     ]
   },
@@ -95,6 +94,7 @@ module.exports = {
 
   node: {
     process: false,
-    global: false
+    global: false,
+    fs: "empty",
   }
 };
